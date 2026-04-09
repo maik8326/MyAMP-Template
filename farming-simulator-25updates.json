@@ -1,16 +1,13 @@
 [
     {
-        "UpdateStageName": "Downloading FS25 Server",
+        "UpdateStageName": "Steam Download",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "SteamCMD",
         "UpdateSourceData": "2301650",
-        "UpdateSourceArgs": "2300320",
+        "UpdateSourceArgs": "2301650",
         "UpdateSourceVersion": "public",
         "UnzipUpdateSource": false,
-        "OverwriteExistingFiles": false,
-        "ForceDownloadPlatform": "Windows",
-        "UpdateSourceConditionValue": "",
-        "DeleteAfterExtract": true,
-        "OneShot": false
+        "OverwriteExistingFiles": true,
+        "DeleteAfterExtract": false
     }
 ]
