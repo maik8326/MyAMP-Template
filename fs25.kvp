@@ -2,10 +2,14 @@
 AppConfigId=fs25
 DisplayName=Farming Simulator 2025 (Docker-Wine)
 Description=Dedizierter FS25 Server unter Linux mittels Wine und Docker. Inklusive VNC-Support für die Erstaktivierung.
-# Diese Zeile hat gefehlt:
 DisplayImageSource=steam:2300320
 OS=Linux
 Arch=x86_64
 Author=SystemExpert
 URL=https://www.farming-simulator.com/
 AppID=FS25
+
+[GenericModule.App]
+App.MinAMPVersion=2.6.0.0
+App.UpdateSources=@IncludeJson[fs25config.json]
+App.Ports=@IncludeJson[fs25ports.json]
