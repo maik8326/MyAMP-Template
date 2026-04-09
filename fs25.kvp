@@ -1,0 +1,9 @@
+GenericModule.Meta.AppConfigId=fs25
+GenericModule.Meta.DisplayName=Farming Simulator 2025 (Docker-Wine)
+GenericModule.Meta.Description=Dedizierter FS25 Server unter Linux mittels Wine und Docker. Inklusive VNC-Support für die Erstaktivierung.
+GenericModule.Meta.OS=Linux
+GenericModule.Meta.Arch=x86_64
+GenericModule.Meta.Author=SystemExpert
+GenericModule.Meta.URL=https://www.farming-simulator.com/
+GenericModule.Meta.AppID=FS25
+GenericModule.App.MinAMPVersion=2.6.0.0

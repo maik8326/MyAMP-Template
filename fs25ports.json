@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "Game Port",
+        "Port": 10823,
+        "Protocol": "UDP",
+        "Direction": "Inbound"
+    },
+    {
+        "Name": "Web Admin Interface",
+        "Port": 8443,
+        "Protocol": "TCP",
+        "Direction": "Inbound"
+    },
+    {
+        "Name": "VNC Remote Desktop",
+        "Port": 5900,
+        "Protocol": "TCP",
+        "Direction": "Inbound"
+    }
+]

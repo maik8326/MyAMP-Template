@@ -1,0 +1,30 @@
+{
+    "ApplicationName": "Farming Simulator 2025",
+    "Identifier": "fs25",
+    "Author": "SystemExpert",
+    "Description": "Farming Simulator 2025 Server-Template für AMP. Erfordert eine gültige GIANTS-Lizenz.",
+    "DockerImage": "toetje585/arch-fs25server:latest",
+    "IsDockerOnly": true,
+    "ExecutableLinux": "/usr/bin/supervisorctl",
+    "CommandLineLinux": "start fs25-server",
+    "WorkingDirectory": "/",
+    "StartupConfirmationMode": "LogFile",
+    "LogFilePath": "config/log.txt",
+    "ReadyExpression": "^.*Game server started.*$",
+    "Settings": [
+        {
+            "Name": "Server Name",
+            "Description": "Name des Servers in der Liste",
+            "Category": "Server Settings",
+            "Type": "String",
+            "DefaultValue": "AMP FS25 Server"
+        }
+    ],
+    "UpdateStages": [
+        {
+            "DisplayName": "Docker Pull",
+            "Type": "Download",
+            "Arguments": "toetje585/arch-fs25server:latest"
+        }
+    ]
+}
