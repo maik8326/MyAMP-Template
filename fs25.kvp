@@ -1,84 +1,35 @@
-Meta.DisplayName=Farming Simulator 25
-Meta.Description=
+[GenericModule.Meta]
+Meta.DisplayName=Farming Simulator 2025
+Meta.Description=Dedizierter FS25 Server unter Linux (Docker-Wine)
+Meta.OS=Linux
 Meta.Arch=x86_64
-Meta.Author=Maik832 - Made with AMP Config Generator
-Meta.URL=https://store.steampowered.com/app/2300320/Farming_Simulator_25
-Meta.MinAMPVersion=2.4.6.6
-Meta.SpecificDockerImage=cubecoders/ampbase:xvfb
-Meta.DockerRequired=False
-Meta.ContainerPolicy=Supported
-Meta.ContainerPolicyReason=
-Meta.Prerequsites=[]
-Meta.EndpointURIFormat=steam://connect/{ip}:{GenericModule.App.Ports.$SteamQueryPort}
-Meta.AppConfigId=effb1ed3-3d80-436e-921a-9fb5d89aaf8b
-App.AdminMethod=STDIO
-App.HasReadableConsole=true
-App.HasWritableConsole=false
-App.DisplayName=Farming Simulator 25
-App.CommandLineArgs={{IsHeadless}} -port {{GamePort}} -path "{{ProfilePath}}" -name "{{ServerName}}"
-App.WindowsCommandLineArgs=-nointro -log
-App.CommandLineParameterFormat=-{0} {1}
-App.CommandLineParameterDelimiter= 
-App.RapidStartup=false
-App.ApplicationReadyMode=RegexMatch
-App.ExitMethod=SIGINT
-App.ExitString=stop
-App.ExitTimeout=30
-App.ExitFile=app_exit.lck
-App.SupportsLiveSettingsChanges=False
-App.LiveSettingChangeCommandFormat=set {0} "{1}"
-App.ApplicationIPBinding=0.0.0.0
-App.AdminPortRef=RemoteAdminPort
-App.UniversalSleepApplicationUDPPortRef=GamePort1
-App.PrimaryApplicationPortRef=GamePort1
-App.UniversalSleepSteamQueryPortRef=SteamQueryPort
-App.MaxUsers=8
-App.UseRandomAdminPassword=True
-App.RemoteAdminPassword=
-App.AdminLoginTransform=None
-App.RCONConnectDelaySeconds=30
-App.RCONConnectRetrySeconds=15
-App.RCONHeartbeatCommand=ping
-App.RCONHeartbeatMinutes=0
-App.TelnetLoginFormat={0}
-App.SteamUpdateAnonymousLogin=True
-App.SteamForceLoginPrompt=False
-App.SupportsUniversalSleep=False
-App.WakeupMode=Any
-App.TemplateMatchRegex={{(\$?[\w]+)}}
-App.MonitorChildProcess=False
-App.MonitorChildProcessWaitMs=1000
-App.MonitorChildProcessName=
-App.Compatibility=None
-App.SteamWorkshopDownloadLocation={{$FullBaseDir}}{{ProfilePath}}/mods
-Console.FilterMatchRegex=
-Console.FilterMatchReplacement=
-Console.ThrowawayMessageRegex=(WARNING|ERROR): Shader.+
-Console.UpdateAvailableRegex=^\[\d\d:\d\d:\d\d\] \[INFO\] A new server update is available! v[\d\.]+.$
-Console.SuppressLogAtStart=False
-Console.ActivateLogRegex=
-Console.UserActions={}
-Console.SleepMode=False
-Console.SleepOnStart=False
-Console.SleepDelayMinutes=5
-Console.DozeDelay=2
-Console.AutoRetryCount=5
-Console.SleepStartThresholdSeconds=25
-Console.AppReadyRegex=^Started\s+network\s+server$
-Console.UserJoinRegex=^\[Network\]\s+User\s+'(?<username>.+)'\s+\(id:\s+(?<userid>.+)\)\s+connected$
-Console.UserLeaveRegex=^\[Network\]\s+User\s+'(?<username>.+)'\s+\(id:\s+(?<userid>.+)\)\s+disconnected$
-Console.UserChatRegex=^\[Chat\]\s+(?<username>.+):\s+(?<message>.+)$
-Meta.OS=3
+Meta.Author=SystemExpert
+Meta.URL=https://www.farming-simulator.com/
+Meta.DisplayImageSource=steam:2300320
+Meta.MinAMPVersion=2.6.0.0
+Meta.AppConfigId=fs25
+# Verweise auf die anderen Konfigurationsdateien
 Meta.ConfigManifest=fs25config.json
 Meta.MetaConfigManifest=fs25metaconfig.json
 Meta.ConfigRoot=fs25.kvp
+
+[GenericModule.App]
+App.DisplayName=Farming Simulator 2025
 App.RootDir=./farming-simulator-25/
-Meta.DisplayImageSource=steam:2300320
-App.BaseDirectory=./farming-simulator-25/2300320/
-App.WorkingDir=2300320
-App.ExecutableWin=2300320\x64\FarmingSimulator25Game.exe
+# Hier nutzen wir die Steam-AppID des Servers für den Basispfad
+App.BaseDirectory=./farming-simulator-25/2301650/
+App.WorkingDir=2301650
 App.ExecutableLinux=/usr/bin/xvfb-run
-App.LinuxCommandLineArgs=-a "{{$FullRootDir}}1580130/proton" run "./x64\FarmingSimulator25Game.exe" -nointro -log -server
+# Startbefehl optimiert für Wine/Proton im Docker
+App.LinuxCommandLineArgs=-a "{{$FullRootDir}}1580130/proton" run "./x64/FarmingSimulator25Game.exe" -nointro -log -server -port {{GamePort}} -name "{{ServerName}}"
+App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}linux64:%LD_LIBRARY_PATH%","SteamAppId":"2300320"}
+
+# Verknüpfung der externen JSON-Dateien
 App.Ports=@IncludeJson[fs25ports.json]
 App.UpdateSources=@IncludeJson[fs25updates.json]
-App.EnvironmentVariables={"LD_LIBRARY_PATH": "{{$FullBaseDir}}linux64:{{$FullRootDir}}linux64:%LD_LIBRARY_PATH%", "SteamAppId": "2300320", "STEAM_COMPAT_DATA_PATH": "{{$FullRootDir}}1580130", "STEAM_COMPAT_CLIENT_INSTALL_PATH": "{{$FullRootDir}}1580130"}
+
+[GenericModule.Console]
+Console.AppReadyRegex=^Started\s+network\s+server$
+Console.UserJoinRegex=^\[Network\]\s+User\s+'(?<username>.+)'\s+\(id:\s+(?<userid>.+)\)\s+connected$
+Console.UserLeaveRegex=^\[Network\]\s+User\s+'(?<username>.+)'\s+\(id:\s+(?<userid>.+)\)\s+disconnected$
+Console.UpdateAvailableRegex=^\[\d\d:\d\d:\d\d\] \[INFO\] A new server update is available!
