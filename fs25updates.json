@@ -1,16 +1,20 @@
 [
     {
-        "UpdateStageName": "Downloading FS25 Server",
+        "UpdateStageName": "SteamCMD Download",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "SteamCMD",
         "UpdateSourceData": "2301650",
         "UpdateSourceArgs": "2300320",
         "UpdateSourceVersion": "public",
-        "UnzipUpdateSource": false,
-        "OverwriteExistingFiles": false,
         "ForceDownloadPlatform": "Windows",
-        "UpdateSourceConditionValue": "",
-        "DeleteAfterExtract": true,
-        "OneShot": false
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Initialisierung der Ordner",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"mkdir -p {{$FullBaseDir}}config/mods; mkdir -p {{$FullBaseDir}}profile\"",
+        "SkipOnFailure": true
     }
 ]
