@@ -1,15 +1,21 @@
 [GenericModule.Meta]
-AppConfigId=fs25
-DisplayName=Farming Simulator 2025 (Docker-Wine)
-Description=Dedizierter FS25 Server unter Linux mittels Wine und Docker. Inklusive VNC-Support für die Erstaktivierung.
+AppConfigId=farming-simulator-25
+DisplayName=Farming Simulator 25
+Description=Dedicated FS25 Server - Based on Website Config
 DisplayImageSource=steam:2300320
 OS=Linux
 Arch=x86_64
-Author=SystemExpert
-URL=https://www.farming-simulator.com/
-AppID=FS25
+Author=Maik832
+URL=https://store.steampowered.com/app/2300320/Farming_Simulator_25
 
 [GenericModule.App]
-App.MinAMPVersion=2.6.0.0
-App.UpdateSources=@IncludeJson[fs25config.json]
-App.Ports=@IncludeJson[fs25ports.json]
+App.MinAMPVersion=2.4.6.6
+App.ExecutableWin=x64\FarmingSimulator25Game.exe
+App.ExecutableLinux=/usr/bin/xvfb-run
+App.LinuxCommandLineArgs=-a "{{$FullRootDir}}1580130/proton" run "./x64/FarmingSimulator25Game.exe" -nointro -log -server -port {{GamePort}} -name "{{ServerName}}"
+App.UpdateSources=@IncludeJson[farming-simulator-25updates.json]
+App.Ports=@IncludeJson[farming-simulator-25ports.json]
+App.EnvironmentVariables={"LD_LIBRARY_PATH": "{{$FullBaseDir}}linux64:{{$FullRootDir}}linux64:%LD_LIBRARY_PATH%", "SteamAppId": "2300320", "STEAM_COMPAT_DATA_PATH": "{{$FullRootDir}}1580130", "STEAM_COMPAT_CLIENT_INSTALL_PATH": "{{$FullRootDir}}1580130"}
+
+[GenericModule.Monitor]
+Monitor.ServerReadyExpression=^Started\s+network\s+server$
