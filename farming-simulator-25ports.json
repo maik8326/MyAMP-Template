@@ -1,0 +1,23 @@
+[
+    {
+        "Protocol": "UDP",
+        "Port": "10823",
+        "Name": "",
+        "Description": "Port used for main game traffic",
+        "Ref": ""
+    },
+    {
+        "Protocol": "TCP",
+        "Port": "8080",
+        "Name": "Web Interface",
+        "Description": "Port used for main game traffic",
+        "Ref": "WebInterface"
+    },
+    {
+        "Protocol": "UDP",
+        "Port": "27015",
+        "Name": "Steam Query Port",
+        "Description": "Port used for main game traffic",
+        "Ref": "SteamQueryPort"
+    }
+]

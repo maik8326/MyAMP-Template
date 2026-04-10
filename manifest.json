@@ -1,8 +1,10 @@
 {
-    "Name": "Farming Simulator 2025",
-    "Description": "Professional Docker-Wine Template for FS25",
-    "Author": "SystemExpert",
-    "Version": "2.0.0",
-    "Website": "https://github.com/maik8326/MyAMP-Template",
-    "UpdateURL": "https://github.com/maik8326/MyAMP-Template"
+    "id": "bc72d0b7-5c08-4b02-bc6b-2bb7b22dfd8b",
+    "authors": [
+        "Maik832 - Made with AMP Config Generator"
+    ],
+    "origin": "https://github.com/Maik832 - Made with AMP Config Generator/AMPTemplates.git",
+    "url": "https://github.com/Maik832 - Made with AMP Config Generator/AMPTemplates",
+    "imagefile": "",
+    "prefix": "Maik832 - Made with AMP Config Generator"
 }
